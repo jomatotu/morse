@@ -13,6 +13,7 @@ function t(key) { return LANG[key] || key; }
 let audioCtx = null;
 let playbackTimeout = null;
 let isPlaying = false;
+let playbackSource = null; // 'translator' | 'quiz'
 
 function getAudioCtx() {
   if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -37,19 +38,23 @@ function playTone(startTime, duration, freq = 650) {
 
 function stopPlayback() {
   isPlaying = false;
+  playbackSource = null;
   if (playbackTimeout) { clearTimeout(playbackTimeout); playbackTimeout = null; }
   setLedState('off');
   updatePlayBtn(false);
 }
 
-function playMorse(morseStr, unit = 60) {
+function playMorse(morseStr, unit, source) {
   if (!morseStr.trim()) return;
+  // Stop any ongoing playback regardless of source
   stopPlayback();
   isPlaying = true;
-  updatePlayBtn(true);
+  playbackSource = source || 'translator';
+
+  if (source === 'translator') updatePlayBtn(true);
 
   const ctx = getAudioCtx();
-  const { events, total } = getTimings(morseStr, unit);
+  const { events, total } = getTimings(morseStr, unit || 60);
   const baseTime = ctx.currentTime + 0.1;
 
   events.forEach(({ t, len, sym }) => {
@@ -60,7 +65,12 @@ function playMorse(morseStr, unit = 60) {
     setTimeout(() => { if (isPlaying) setLedState('off'); }, t + len);
   });
 
-  playbackTimeout = setTimeout(() => { stopPlayback(); }, total + 300);
+  playbackTimeout = setTimeout(() => {
+    isPlaying = false;
+    playbackSource = null;
+    setLedState('off');
+    if (source === 'translator') updatePlayBtn(false);
+  }, total + 300);
 }
 
 function setLedState(state) {
@@ -95,20 +105,24 @@ function initTranslator() {
   if (!textIn) return;
 
   textIn.addEventListener('input', () => {
+    // Stop quiz playback if user is typing in translator
+    if (isPlaying && playbackSource === 'quiz') stopPlayback();
     const m = encode(textIn.value);
     morseIn.value = m.replace(/\./g, '·').replace(/-/g, '—');
   });
 
   morseIn.addEventListener('input', () => {
+    // Stop quiz playback if user is typing in translator
+    if (isPlaying && playbackSource === 'quiz') stopPlayback();
     const raw = morseIn.value.replace(/·/g, '.').replace(/—/g, '-');
     textIn.value = decode(raw);
   });
 
   playBtn.addEventListener('click', () => {
-    if (isPlaying) { stopPlayback(); return; }
+    if (isPlaying && playbackSource === 'translator') { stopPlayback(); return; }
     const raw = morseIn.value.replace(/·/g, '.').replace(/—/g, '-');
     const unit = 200 - (parseInt(speedEl.value) * 15);
-    playMorse(raw, unit);
+    playMorse(raw, unit, 'translator');
   });
 }
 
@@ -133,38 +147,56 @@ function renderQuiz() {
   card.querySelector('.quiz-prompt-label').textContent = promptLabel;
   card.querySelector('.quiz-target').textContent = prompt;
   card.querySelector('.quiz-score').textContent = `${t('quiz_score')}: ${score}/${total}`;
-  card.querySelector('.quiz-input').value = '';
-  card.querySelector('.quiz-input').disabled = answered;
-  card.querySelector('.quiz-feedback').textContent = '';
-  card.querySelector('.quiz-feedback').className = 'quiz-feedback';
+  const inp = card.querySelector('.quiz-input');
+  inp.value = '';
+  inp.disabled = answered;
+  inp.placeholder = t('quiz_placeholder');
+  const fb = card.querySelector('.quiz-feedback');
+  fb.textContent = '';
+  fb.className = 'quiz-feedback';
   card.querySelector('.quiz-check').style.display = answered ? 'none' : '';
   card.querySelector('.quiz-next').style.display = answered ? '' : 'none';
+  card.querySelector('.quiz-check').textContent = t('quiz_check');
+  card.querySelector('.quiz-next').textContent = t('quiz_next');
 
-  if (!isPlaying) {
-    const morse = isMorse ? encode(current || '') : current || '';
-    if (morse) {
-      setTimeout(() => playMorse(morse.replace(/·/g,'.').replace(/—/g,'-'), 80), 300);
-    }
+  // Auto-play quiz target ONLY if translator is not playing
+  if (!isPlaying || playbackSource !== 'translator') {
+    const morse = encode(current || '').replace(/·/g,'.').replace(/—/g,'-');
+    if (morse) setTimeout(() => {
+      if (!isPlaying || playbackSource !== 'translator') playMorse(morse, 80, 'quiz');
+    }, 200);
   }
 }
 
+function animateQuizResult(correct) {
+  const card = document.getElementById('quiz-card');
+  if (!card) return;
+  card.classList.remove('anim-correct', 'anim-wrong');
+  void card.offsetWidth; // reflow to restart animation
+  card.classList.add(correct ? 'anim-correct' : 'anim-wrong');
+}
+
 function checkQuiz() {
-  const input = document.getElementById('quiz-card').querySelector('.quiz-input');
-  const feedback = document.getElementById('quiz-card').querySelector('.quiz-feedback');
+  const card = document.getElementById('quiz-card');
+  const input = card.querySelector('.quiz-input');
+  const feedback = card.querySelector('.quiz-feedback');
   const { dir, current } = quizState;
   const answer = input.value.trim().toUpperCase().replace(/·/g,'.').replace(/—/g,'-');
   const correct = dir === 'to_morse'
     ? encode(current).replace(/\s/g,'')
     : current;
-  const userNorm = answer.replace(/\s/g,'');
-  const correctNorm = correct.replace(/\s/g,'');
-  const ok = userNorm === correctNorm;
+  const ok = answer.replace(/\s/g,'') === correct.replace(/\s/g,'');
   quizState.total++;
   if (ok) quizState.score++;
   quizState.answered = true;
   feedback.textContent = ok ? t('quiz_correct') : `${t('quiz_wrong')} ${correct}`;
   feedback.className = 'quiz-feedback ' + (ok ? 'correct' : 'wrong');
-  renderQuiz();
+  animateQuizResult(ok);
+  // Re-render controls (show Next, hide Check, update score) without re-rendering prompt
+  input.disabled = true;
+  card.querySelector('.quiz-check').style.display = 'none';
+  card.querySelector('.quiz-next').style.display = '';
+  card.querySelector('.quiz-score').textContent = `${t('quiz_score')}: ${quizState.score}/${quizState.total}`;
 }
 
 function nextQuiz() {
@@ -271,21 +303,17 @@ function initNav() {
 
 /* ── Render (i18n-driven DOM update) ── */
 function renderAll() {
-  // Nav
   setT('nav-about', t('nav_about'));
   setT('nav-history', t('nav_history'));
   setT('nav-translate', t('nav_translate'));
   setT('nav-quiz', t('nav_quiz'));
-  setT('nav-stations', t('nav_stations'));
   setT('nav-cheatsheet', t('nav_cheatsheet'));
   setT('nav-links', t('nav_links'));
 
-  // Hero
   setT('hero-subtitle', t('hero_subtitle'));
   setT('hero-desc', t('hero_desc'));
   setT('hero-scroll', t('hero_scroll'));
 
-  // About
   setT('about-title', t('about_title'));
   setT('about-p1', t('about_p1'));
   setT('about-p2', t('about_p2'));
@@ -298,7 +326,6 @@ function renderAll() {
   setT('about-fact2', t('about_fact2'));
   setT('about-fact3', t('about_fact3'));
 
-  // History
   setT('history-title', t('history_title'));
   setT('history-intro', t('history_intro'));
   const accList = document.getElementById('accordion-list');
@@ -313,13 +340,18 @@ function renderAll() {
           </span>
           <span class="acc-icon">▾</span>
         </button>
-        <div class="accordion-body"><p>${a.body}</p></div>
+        <div class="accordion-body">
+          <p>${a.body}</p>
+          ${a.links && a.links.length ? `
+            <div class="acc-links">
+              ${a.links.map(l => `<a href="${l.url}" target="_blank" rel="noopener" class="acc-link">↗ ${l.label}</a>`).join('')}
+            </div>` : ''}
+        </div>
       </div>
     `).join('');
     initAccordion();
   }
 
-  // Translator
   setT('translate-title', t('translate_title'));
   setT('translate-text-label', t('translate_text_label'));
   setT('translate-morse-label', t('translate_morse_label'));
@@ -329,9 +361,8 @@ function renderAll() {
   const morseIn = document.getElementById('morse-input');
   if (textIn) textIn.placeholder = t('translate_placeholder_text');
   if (morseIn) morseIn.placeholder = t('translate_placeholder_morse');
-  updatePlayBtn(isPlaying);
+  updatePlayBtn(isPlaying && playbackSource === 'translator');
 
-  // Quiz
   setT('quiz-title', t('quiz_title'));
   setT('quiz-desc', t('quiz_desc'));
   const ql = document.querySelector('[data-quiz-mode="letter"]');
@@ -342,30 +373,13 @@ function renderAll() {
   if (qw) qw.textContent = t('quiz_mode_word');
   if (qdm) qdm.textContent = t('quiz_dir_to_morse');
   if (qdt) qdt.textContent = t('quiz_dir_to_text');
-  renderQuiz();
 
-  // Stations
-  setT('stations-title', t('stations_title'));
-  setT('stations-intro', t('stations_intro'));
-  const stEl = document.getElementById('stations-grid');
-  if (stEl) {
-    stEl.innerHTML = LANG.stations.map(s => `
-      <div class="station-card">
-        <div class="station-letter">${s.letter}</div>
-        <h3>${s.title}</h3>
-        <p>${s.desc}</p>
-      </div>
-    `).join('');
-  }
-
-  // Cheatsheet
   setT('cheatsheet-title', t('cheatsheet_title'));
   setT('cheatsheet-desc', t('cheatsheet_desc'));
   setT('cheatsheet-receive-label', t('cheatsheet_receive'));
   setT('cheatsheet-send-label', t('cheatsheet_send'));
   setT('cheatsheet-print-btn', t('cheatsheet_print'));
 
-  // Links
   setT('links-title', t('links_title'));
   setT('links-intro', t('links_intro'));
   const linksEl = document.getElementById('links-list');
@@ -378,7 +392,6 @@ function renderAll() {
     `).join('');
   }
 
-  // Footer
   setT('footer-workshop', t('footer_workshop'));
   setT('footer-event', t('footer_event'));
   setT('footer-license', t('footer_license'));

@@ -18,9 +18,8 @@
   <ul class="nav-links">
     <li><a href="#about" id="nav-about">Über Morsen</a></li>
     <li><a href="#history" id="nav-history">Geschichte</a></li>
-    <li><a href="#translate" id="nav-translate">Übersetzer</a></li>
-    <li><a href="#quiz" id="nav-quiz">Quiz</a></li>
-    <li><a href="#stations" id="nav-stations">Stationen</a></li>
+    <li><a href="#practice" id="nav-translate">Übersetzer</a></li>
+    <li><a href="#practice" id="nav-quiz">Quiz</a></li>
     <li><a href="#cheatsheet" id="nav-cheatsheet">Cheatsheet</a></li>
     <li><a href="#links" id="nav-links">Weiterlernen</a></li>
   </ul>
@@ -89,10 +88,13 @@
   <div class="accordion-list" id="accordion-list"></div>
 </section>
 
+<!-- ── TRANSLATOR + QUIZ side by side ── -->
+<div class="practice-grid" id="practice">
+
 <!-- ── TRANSLATOR ── -->
 <section id="translate">
   <span class="section-label">03</span>
-  <h2 id="translate-title">Übersetzer</h2>
+  <h2 id="translate-title" style="margin-bottom:0.5rem">Übersetzer</h2>
 
   <div class="led-display">
     <div id="translator-led" class="led-big"></div>
@@ -145,18 +147,11 @@
     <div class="quiz-score"></div>
   </div>
 </section>
-
-<!-- ── STATIONS ── -->
-<section id="stations">
-  <span class="section-label">05</span>
-  <h2 id="stations-title">Die 4 Stationen</h2>
-  <p id="stations-intro"></p>
-  <div class="stations-grid" id="stations-grid"></div>
-</section>
+</div><!-- end .practice-grid -->
 
 <!-- ── CHEATSHEET ── -->
 <section id="cheatsheet">
-  <span class="section-label">06</span>
+  <span class="section-label">04</span>
   <h2 id="cheatsheet-title">Cheatsheet</h2>
   <p id="cheatsheet-desc"></p>
 
@@ -307,7 +302,7 @@
 
 <!-- ── LINKS ── -->
 <section id="links">
-  <span class="section-label">07</span>
+  <span class="section-label">05</span>
   <h2 id="links-title">Weiterlernen</h2>
   <p id="links-intro"></p>
   <div class="links-list" id="links-list"></div>
