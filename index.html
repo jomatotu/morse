@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antifaschistisches Morsen · Fusion 2026</title>
+  <meta name="description" content="Workshop-Website: Morsecode als Werkzeug des Widerstands. Fusion Festival 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav">
+  <span class="nav-logo">·— ·· ·—· ·— ·</span>
+  <ul class="nav-links">
+    <li><a href="#about" id="nav-about">Über Morsen</a></li>
+    <li><a href="#history" id="nav-history">Geschichte</a></li>
+    <li><a href="#translate" id="nav-translate">Übersetzer</a></li>
+    <li><a href="#quiz" id="nav-quiz">Quiz</a></li>
+    <li><a href="#stations" id="nav-stations">Stationen</a></li>
+    <li><a href="#cheatsheet" id="nav-cheatsheet">Cheatsheet</a></li>
+    <li><a href="#links" id="nav-links">Weiterlernen</a></li>
+  </ul>
+  <div class="lang-switch">
+    <button class="lang-btn active" data-lang-switch="de">DE</button>
+    <button class="lang-btn" data-lang-switch="en">EN</button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-antenna">
+    <svg class="antenna-svg" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="20,10 60,10 40,40" stroke="#d2a946" stroke-width="3" fill="none" stroke-linejoin="round"/>
+      <line x1="40" y1="40" x2="40" y2="75" stroke="#d2a946" stroke-width="3"/>
+      <line x1="10" y1="75" x2="70" y2="75" stroke="#d2a946" stroke-width="3"/>
+    </svg>
+    <span id="hero-led" class="hero-led led-off"></span>
+  </div>
+  <h1 class="hero-title">Antifaschistisches<br>Morsen</h1>
+  <p class="hero-subtitle" id="hero-subtitle">Workshop · Fusion Festival 2026</p>
+  <p class="hero-desc" id="hero-desc">Morsecode als Werkzeug des Widerstands — gestern, heute, morgen.</p>
+  <span class="hero-scroll" id="hero-scroll">↓ Weiter erkunden</span>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <span class="section-label">01</span>
+  <h2 id="about-title">Was ist Morsen?</h2>
+  <p id="about-p1"></p>
+  <br>
+  <p id="about-p2"></p>
+
+  <h3 style="margin-top:2rem" id="about-timing-title">Timing-Prinzip</h3>
+  <div class="timing-grid">
+    <div class="timing-cell">
+      <span class="timing-symbol">·</span>
+      <span class="timing-label" id="about-dit">Dit (kurz)</span>
+    </div>
+    <div class="timing-cell">
+      <span class="timing-symbol">—</span>
+      <span class="timing-label" id="about-dah">Dah (lang = 3×)</span>
+    </div>
+    <div class="timing-cell">
+      <span class="timing-symbol" style="font-size:0.75rem">A·B</span>
+      <span class="timing-label" id="about-char">Buchstaben-Pause (3×)</span>
+    </div>
+    <div class="timing-cell">
+      <span class="timing-symbol" style="font-size:0.75rem">/</span>
+      <span class="timing-label" id="about-word">Wort-Pause (7×)</span>
+    </div>
+  </div>
+
+  <div class="facts-grid">
+    <div class="fact-item" id="about-fact1"></div>
+    <div class="fact-item" id="about-fact2"></div>
+    <div class="fact-item" id="about-fact3"></div>
+  </div>
+</section>
+
+<!-- ── HISTORY ── -->
+<section id="history">
+  <span class="section-label">02</span>
+  <h2 id="history-title">Morsecode im Widerstand</h2>
+  <p id="history-intro"></p>
+  <div class="accordion-list" id="accordion-list"></div>
+</section>
+
+<!-- ── TRANSLATOR ── -->
+<section id="translate">
+  <span class="section-label">03</span>
+  <h2 id="translate-title">Übersetzer</h2>
+
+  <div class="led-display">
+    <div id="translator-led" class="led-big"></div>
+  </div>
+
+  <div class="translator-grid">
+    <div>
+      <label class="field-label" id="translate-text-label" for="text-input">Text</label>
+      <textarea id="text-input" rows="4" placeholder="Text eingeben…" spellcheck="false"></textarea>
+    </div>
+    <div>
+      <label class="field-label" id="translate-morse-label" for="morse-input">Morsecode</label>
+      <textarea id="morse-input" rows="4" placeholder="· · · — — — · · ·" spellcheck="false"></textarea>
+    </div>
+  </div>
+
+  <div class="translator-controls">
+    <button class="play-btn" id="play-btn">Abspielen ▶</button>
+    <div class="speed-wrap">
+      <label id="translate-speed-label">Geschwindigkeit</label>
+      <input type="range" id="speed-range" min="1" max="10" value="5">
+    </div>
+  </div>
+  <p class="translator-hint" id="translate-hint"></p>
+</section>
+
+<!-- ── QUIZ ── -->
+<section id="quiz">
+  <span class="section-label">04</span>
+  <h2 id="quiz-title">Lernmodus</h2>
+  <p id="quiz-desc"></p>
+
+  <div class="quiz-controls">
+    <button class="quiz-btn active" data-quiz-mode="letter">Buchstaben</button>
+    <button class="quiz-btn" data-quiz-mode="word">Wörter</button>
+    <span style="width:1px;background:var(--border);margin:0 0.25rem;align-self:stretch"></span>
+    <button class="quiz-btn active" data-quiz-dir="to_morse">Text → Morse</button>
+    <button class="quiz-btn" data-quiz-dir="to_text">Morse → Text</button>
+  </div>
+
+  <div class="quiz-card" id="quiz-card">
+    <span class="quiz-prompt-label"></span>
+    <div class="quiz-target"></div>
+    <div class="quiz-input-row">
+      <input class="quiz-input" type="text" placeholder="Antwort…" autocomplete="off" autocorrect="off" autocapitalize="characters">
+      <button class="quiz-check">Prüfen</button>
+      <button class="quiz-next" style="display:none">Weiter</button>
+    </div>
+    <div class="quiz-feedback"></div>
+    <div class="quiz-score"></div>
+  </div>
+</section>
+
+<!-- ── STATIONS ── -->
+<section id="stations">
+  <span class="section-label">05</span>
+  <h2 id="stations-title">Die 4 Stationen</h2>
+  <p id="stations-intro"></p>
+  <div class="stations-grid" id="stations-grid"></div>
+</section>
+
+<!-- ── CHEATSHEET ── -->
+<section id="cheatsheet">
+  <span class="section-label">06</span>
+  <h2 id="cheatsheet-title">Cheatsheet</h2>
+  <p id="cheatsheet-desc"></p>
+
+  <div class="cheatsheet-grid">
+    <!-- RECEIVE side -->
+    <div class="cheatsheet-card">
+      <span class="cheatsheet-label" id="cheatsheet-receive-label">EMPFANGEN</span>
+      <div class="cheatsheet-svg-wrap">
+        <svg viewBox="0 0 550 850" xmlns="http://www.w3.org/2000/svg" aria-label="Morse code decoding tree">
+          <defs>
+            <filter id="ledGlow2" x="-150%" y="-150%" width="400%" height="400%">
+              <feGaussianBlur stdDeviation="9"/>
+            </filter>
+          </defs>
+          <rect x="0" y="0" width="550" height="850" rx="24" fill="#1a1712"/>
+          <text x="275" y="78" text-anchor="middle" font-size="44" font-weight="700" letter-spacing="7" fill="#d2a946" font-family="Chakra Petch, sans-serif">RECEIVE</text>
+          <text x="516" y="700" transform="rotate(-90 516 700)" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="2" fill="#d2a946" font-family="Chakra Petch, sans-serif">ALERTA ALERTA</text>
+          <g stroke="#d2a946" stroke-width="4" fill="none" stroke-linejoin="round">
+            <path d="M 231 120 L 277 120 L 254 164 Z"/>
+            <line x1="254" y1="164" x2="254" y2="217"/>
+          </g>
+          <g stroke="#d2a946" stroke-width="3.5" fill="none">
+            <line x1="68"  y1="217" x2="502" y2="217"/>
+            <line x1="130" y1="217" x2="130" y2="412"/>
+            <line x1="68"  y1="317" x2="130" y2="317"/>
+            <line x1="192" y1="217" x2="192" y2="767"/>
+            <line x1="68"  y1="492" x2="192" y2="492"/>
+            <line x1="130" y1="492" x2="130" y2="597"/>
+            <line x1="68"  y1="682" x2="192" y2="682"/>
+            <line x1="316" y1="217" x2="316" y2="767"/>
+            <line x1="316" y1="492" x2="440" y2="492"/>
+            <line x1="316" y1="682" x2="378" y2="682"/>
+            <line x1="378" y1="217" x2="378" y2="412"/>
+            <line x1="440" y1="217" x2="440" y2="317"/>
+          </g>
+          <g fill="#d2a946">
+            <rect x="47"  y="207" width="42" height="20" rx="6"/>
+            <rect x="109" y="207" width="42" height="20" rx="6"/>
+            <rect x="171" y="207" width="42" height="20" rx="6"/>
+            <circle cx="316" cy="217" r="11"/>
+            <circle cx="378" cy="217" r="11"/>
+            <circle cx="440" cy="217" r="11"/>
+            <circle cx="502" cy="217" r="11"/>
+            <rect x="47"  y="307" width="42" height="20" rx="6"/>
+            <circle cx="130" cy="317" r="11"/>
+            <rect x="368" y="296" width="20" height="42" rx="6"/>
+            <rect x="430" y="296" width="20" height="42" rx="6"/>
+            <circle cx="130" cy="412" r="11"/>
+            <circle cx="378" cy="412" r="11"/>
+            <rect x="47"  y="482" width="42" height="20" rx="6"/>
+            <rect x="109" y="482" width="42" height="20" rx="6"/>
+            <circle cx="192" cy="492" r="11"/>
+            <rect x="306" y="471" width="20" height="42" rx="6"/>
+            <circle cx="378" cy="492" r="11"/>
+            <circle cx="440" cy="492" r="11"/>
+            <circle cx="130" cy="597" r="11"/>
+            <rect x="47"  y="672" width="42" height="20" rx="6"/>
+            <circle cx="192" cy="682" r="11"/>
+            <rect x="306" y="661" width="20" height="42" rx="6"/>
+            <circle cx="378" cy="682" r="11"/>
+            <circle cx="192" cy="767" r="11"/>
+            <rect x="306" y="746" width="20" height="42" rx="6"/>
+          </g>
+          <g fill="#d2a946" font-size="27" font-weight="600" font-family="Chakra Petch, sans-serif">
+            <text x="68"  y="189" text-anchor="middle">O</text>
+            <text x="130" y="189" text-anchor="middle">M</text>
+            <text x="192" y="189" text-anchor="middle">T</text>
+            <text x="316" y="189" text-anchor="middle">E</text>
+            <text x="378" y="189" text-anchor="middle">I</text>
+            <text x="440" y="189" text-anchor="middle">S</text>
+            <text x="502" y="189" text-anchor="middle">H</text>
+            <text x="68"  y="361" text-anchor="middle">Q</text>
+            <text x="150" y="326" text-anchor="start">G</text>
+            <text x="357" y="326" text-anchor="end">U</text>
+            <text x="461" y="326" text-anchor="start">V</text>
+            <text x="150" y="421" text-anchor="start">Z</text>
+            <text x="397" y="421" text-anchor="start">F</text>
+            <text x="68"  y="469" text-anchor="middle">Y</text>
+            <text x="130" y="469" text-anchor="middle">K</text>
+            <text x="212" y="501" text-anchor="start">N</text>
+            <text x="295" y="501" text-anchor="end">A</text>
+            <text x="378" y="535" text-anchor="middle">R</text>
+            <text x="460" y="501" text-anchor="start">L</text>
+            <text x="150" y="606" text-anchor="start">C</text>
+            <text x="38"  y="691" text-anchor="end">X</text>
+            <text x="212" y="691" text-anchor="start">D</text>
+            <text x="295" y="691" text-anchor="end">W</text>
+            <text x="397" y="691" text-anchor="start">P</text>
+            <text x="172" y="776" text-anchor="end">B</text>
+            <text x="338" y="776" text-anchor="start">J</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- SEND side -->
+    <div class="cheatsheet-card">
+      <span class="cheatsheet-label" id="cheatsheet-send-label">SENDEN</span>
+      <div class="cheatsheet-svg-wrap">
+        <svg viewBox="0 0 550 850" xmlns="http://www.w3.org/2000/svg" aria-label="Morse code reference table">
+          <rect x="0" y="0" width="550" height="850" rx="24" fill="#1a1712"/>
+          <text x="275" y="78" text-anchor="middle" font-size="44" font-weight="700" letter-spacing="7" fill="#d2a946" font-family="Chakra Petch, sans-serif">SEND</text>
+          <g fill="#d2a946" font-size="26" font-weight="600" font-family="Chakra Petch, sans-serif">
+            <text x="44" y="157" text-anchor="middle">A</text><circle cx="76" cy="148" r="6"/><rect x="93" y="142" width="26" height="12" rx="4"/>
+            <text x="312" y="157" text-anchor="middle">N</text><rect x="338" y="142" width="26" height="12" rx="4"/><circle cx="381" cy="148" r="6"/>
+            <text x="44" y="194" text-anchor="middle">B</text><rect x="70" y="179" width="26" height="12" rx="4"/><circle cx="113" cy="185" r="6"/><circle cx="136" cy="185" r="6"/><circle cx="159" cy="185" r="6"/>
+            <text x="312" y="194" text-anchor="middle">O</text><rect x="338" y="179" width="26" height="12" rx="4"/><rect x="375" y="179" width="26" height="12" rx="4"/><rect x="412" y="179" width="26" height="12" rx="4"/>
+            <text x="44" y="231" text-anchor="middle">C</text><rect x="70" y="216" width="26" height="12" rx="4"/><circle cx="113" cy="222" r="6"/><rect x="130" y="216" width="26" height="12" rx="4"/><circle cx="173" cy="222" r="6"/>
+            <text x="312" y="231" text-anchor="middle">P</text><circle cx="344" cy="222" r="6"/><rect x="361" y="216" width="26" height="12" rx="4"/><rect x="398" y="216" width="26" height="12" rx="4"/><circle cx="441" cy="222" r="6"/>
+            <text x="44" y="268" text-anchor="middle">D</text><rect x="70" y="253" width="26" height="12" rx="4"/><circle cx="113" cy="259" r="6"/><circle cx="136" cy="259" r="6"/>
+            <text x="312" y="268" text-anchor="middle">Q</text><rect x="338" y="253" width="26" height="12" rx="4"/><rect x="375" y="253" width="26" height="12" rx="4"/><circle cx="418" cy="259" r="6"/><rect x="435" y="253" width="26" height="12" rx="4"/>
+            <text x="44" y="305" text-anchor="middle">E</text><circle cx="76" cy="296" r="6"/>
+            <text x="312" y="305" text-anchor="middle">R</text><circle cx="344" cy="296" r="6"/><rect x="361" y="290" width="26" height="12" rx="4"/><circle cx="404" cy="296" r="6"/>
+            <text x="44" y="342" text-anchor="middle">F</text><circle cx="76" cy="333" r="6"/><circle cx="99" cy="333" r="6"/><rect x="116" y="327" width="26" height="12" rx="4"/><circle cx="159" cy="333" r="6"/>
+            <text x="312" y="342" text-anchor="middle">S</text><circle cx="344" cy="333" r="6"/><circle cx="367" cy="333" r="6"/><circle cx="390" cy="333" r="6"/>
+            <text x="44" y="379" text-anchor="middle">G</text><rect x="70" y="364" width="26" height="12" rx="4"/><rect x="107" y="364" width="26" height="12" rx="4"/><circle cx="150" cy="370" r="6"/>
+            <text x="312" y="379" text-anchor="middle">T</text><rect x="338" y="364" width="26" height="12" rx="4"/>
+            <text x="44" y="416" text-anchor="middle">H</text><circle cx="76" cy="407" r="6"/><circle cx="99" cy="407" r="6"/><circle cx="122" cy="407" r="6"/><circle cx="145" cy="407" r="6"/>
+            <text x="312" y="416" text-anchor="middle">U</text><circle cx="344" cy="407" r="6"/><circle cx="367" cy="407" r="6"/><rect x="384" y="401" width="26" height="12" rx="4"/>
+            <text x="44" y="453" text-anchor="middle">I</text><circle cx="76" cy="444" r="6"/><circle cx="99" cy="444" r="6"/>
+            <text x="312" y="453" text-anchor="middle">V</text><circle cx="344" cy="444" r="6"/><circle cx="367" cy="444" r="6"/><circle cx="390" cy="444" r="6"/><rect x="407" y="438" width="26" height="12" rx="4"/>
+            <text x="44" y="490" text-anchor="middle">J</text><circle cx="76" cy="481" r="6"/><rect x="93" y="475" width="26" height="12" rx="4"/><rect x="130" y="475" width="26" height="12" rx="4"/><rect x="167" y="475" width="26" height="12" rx="4"/>
+            <text x="312" y="490" text-anchor="middle">W</text><circle cx="344" cy="481" r="6"/><rect x="361" y="475" width="26" height="12" rx="4"/><rect x="398" y="475" width="26" height="12" rx="4"/>
+            <text x="44" y="527" text-anchor="middle">K</text><rect x="70" y="512" width="26" height="12" rx="4"/><circle cx="113" cy="518" r="6"/><rect x="130" y="512" width="26" height="12" rx="4"/>
+            <text x="312" y="527" text-anchor="middle">X</text><rect x="338" y="512" width="26" height="12" rx="4"/><circle cx="381" cy="518" r="6"/><circle cx="404" cy="518" r="6"/><rect x="421" y="512" width="26" height="12" rx="4"/>
+            <text x="44" y="564" text-anchor="middle">L</text><circle cx="76" cy="555" r="6"/><rect x="93" y="549" width="26" height="12" rx="4"/><circle cx="136" cy="555" r="6"/><circle cx="159" cy="555" r="6"/>
+            <text x="312" y="564" text-anchor="middle">Y</text><rect x="338" y="549" width="26" height="12" rx="4"/><circle cx="381" cy="555" r="6"/><rect x="398" y="549" width="26" height="12" rx="4"/><rect x="435" y="549" width="26" height="12" rx="4"/>
+            <text x="44" y="601" text-anchor="middle">M</text><rect x="70" y="586" width="26" height="12" rx="4"/><rect x="107" y="586" width="26" height="12" rx="4"/>
+            <text x="312" y="601" text-anchor="middle">Z</text><rect x="338" y="586" width="26" height="12" rx="4"/><rect x="375" y="586" width="26" height="12" rx="4"/><circle cx="418" cy="592" r="6"/><circle cx="441" cy="592" r="6"/>
+            <text x="44" y="643" text-anchor="middle">1</text><circle cx="76" cy="634" r="6"/><rect x="93" y="628" width="26" height="12" rx="4"/><rect x="130" y="628" width="26" height="12" rx="4"/><rect x="167" y="628" width="26" height="12" rx="4"/><rect x="204" y="628" width="26" height="12" rx="4"/>
+            <text x="312" y="643" text-anchor="middle">6</text><rect x="338" y="628" width="26" height="12" rx="4"/><circle cx="381" cy="634" r="6"/><circle cx="404" cy="634" r="6"/><circle cx="427" cy="634" r="6"/><circle cx="450" cy="634" r="6"/>
+            <text x="44" y="680" text-anchor="middle">2</text><circle cx="76" cy="671" r="6"/><circle cx="99" cy="671" r="6"/><rect x="116" y="665" width="26" height="12" rx="4"/><rect x="153" y="665" width="26" height="12" rx="4"/><rect x="190" y="665" width="26" height="12" rx="4"/>
+            <text x="312" y="680" text-anchor="middle">7</text><rect x="338" y="665" width="26" height="12" rx="4"/><rect x="375" y="665" width="26" height="12" rx="4"/><circle cx="418" cy="671" r="6"/><circle cx="441" cy="671" r="6"/><circle cx="464" cy="671" r="6"/>
+            <text x="44" y="717" text-anchor="middle">3</text><circle cx="76" cy="708" r="6"/><circle cx="99" cy="708" r="6"/><circle cx="122" cy="708" r="6"/><rect x="139" y="702" width="26" height="12" rx="4"/><rect x="176" y="702" width="26" height="12" rx="4"/>
+            <text x="312" y="717" text-anchor="middle">8</text><rect x="338" y="702" width="26" height="12" rx="4"/><rect x="375" y="702" width="26" height="12" rx="4"/><rect x="412" y="702" width="26" height="12" rx="4"/><circle cx="455" cy="708" r="6"/><circle cx="478" cy="708" r="6"/>
+            <text x="44" y="754" text-anchor="middle">4</text><circle cx="76" cy="745" r="6"/><circle cx="99" cy="745" r="6"/><circle cx="122" cy="745" r="6"/><circle cx="145" cy="745" r="6"/><rect x="162" y="739" width="26" height="12" rx="4"/>
+            <text x="312" y="754" text-anchor="middle">9</text><rect x="338" y="739" width="26" height="12" rx="4"/><rect x="375" y="739" width="26" height="12" rx="4"/><rect x="412" y="739" width="26" height="12" rx="4"/><rect x="449" y="739" width="26" height="12" rx="4"/><circle cx="492" cy="745" r="6"/>
+            <text x="44" y="791" text-anchor="middle">5</text><circle cx="76" cy="782" r="6"/><circle cx="99" cy="782" r="6"/><circle cx="122" cy="782" r="6"/><circle cx="145" cy="782" r="6"/><circle cx="168" cy="782" r="6"/>
+            <text x="312" y="791" text-anchor="middle">0</text><rect x="338" y="776" width="26" height="12" rx="4"/><rect x="375" y="776" width="26" height="12" rx="4"/><rect x="412" y="776" width="26" height="12" rx="4"/><rect x="449" y="776" width="26" height="12" rx="4"/><rect x="486" y="776" width="26" height="12" rx="4"/>
+          </g>
+          <line x1="68" y1="613" x2="482" y2="613" stroke="#d2a946" stroke-width="2"/>
+        </svg>
+      </div>
+      <button class="print-btn" id="cheatsheet-print-btn" onclick="window.print()">Drucken</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── LINKS ── -->
+<section id="links">
+  <span class="section-label">07</span>
+  <h2 id="links-title">Weiterlernen</h2>
+  <p id="links-intro"></p>
+  <div class="links-list" id="links-list"></div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div id="footer-workshop"></div>
+  <div id="footer-event" style="color:var(--text-dim);font-size:0.75rem;margin-top:0.25rem"></div>
+  <div id="footer-license" style="margin-top:0.5rem;font-size:0.72rem"></div>
+  <div class="footer-morse" id="footer-alerta"></div>
+</footer>
+
+<script src="morse.js"></script>
+<script src="lang/de.js"></script>
+<script src="lang/en.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
