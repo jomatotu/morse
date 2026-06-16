@@ -4,7 +4,6 @@ const EN = {
   nav_history: 'History',
   nav_translate: 'Translator',
   nav_quiz: 'Quiz',
-  nav_stations: 'Stations',
   nav_cheatsheet: 'Cheatsheet',
   nav_links: 'Learn More',
 
@@ -30,42 +29,72 @@ const EN = {
     {
       title: 'Belgian Resistance, WW2',
       teaser: 'Knitting as a spy tool',
-      body: 'Members of the Belgian resistance knitted messages into their work: a dropped stitch (hole) represented one type of train, a purl stitch (bump) another. Enemy troop movements were documented this way — hidden in harmless socks and scarves.'
+      body: 'Members of the Belgian resistance knitted messages into their work: a dropped stitch (hole) represented one type of train, a purl stitch (bump) another. Enemy troop movements were documented this way — hidden in harmless socks and scarves.',
+      links: [
+        { label: 'Wikipedia: Wartime knitting', url: 'https://en.wikipedia.org/wiki/Wartime_knitting' },
+        { label: 'Wikipedia: Belgian Resistance', url: 'https://en.wikipedia.org/wiki/Belgian_resistance_movement_in_World_War_II' }
+      ]
     },
     {
       title: 'UK Knitting Ban',
       teaser: 'Paranoia on both sides',
-      body: 'The British government recognised the potential — and banned knitting patterns in letters abroad during WW2. At the same time, the UK itself sent women behind enemy lines who encoded information in their knitting. Paranoia became tactics.'
+      body: 'The British government recognised the potential — and banned knitting patterns in letters abroad during WW2. At the same time, the UK itself sent women behind enemy lines who encoded information in their knitting. Paranoia became tactics.',
+      links: [
+        { label: 'Wikipedia: Wartime knitting', url: 'https://en.wikipedia.org/wiki/Wartime_knitting' },
+        { label: 'The Guardian: Knitting as espionage', url: 'https://www.theguardian.com/lifeandstyle/2014/jun/20/knitting-spies-subversive-stitch' }
+      ]
     },
     {
       title: 'Madame Levangle',
       teaser: 'Foot-tapping under the occupiers\' eyes',
-      body: 'While a German officer was stationed in her house, Madame Levangle sat seemingly calm, knitting — and tapped her foot against the floor. In the room below, her children pretended to do homework. In reality they were noting and translating every Morse signal their mother sent.'
+      body: 'While a German officer was stationed in her house, Madame Levangle sat seemingly calm, knitting — and tapped her foot against the floor. In the room below, her children pretended to do homework. In reality they were noting and translating every Morse signal their mother sent.',
+      links: [
+        { label: 'Wikipedia: Wartime knitting (Morse section)', url: 'https://en.wikipedia.org/wiki/Wartime_knitting#Morse_code' }
+      ]
     },
     {
       title: 'Phyllis Latour Doyle',
       teaser: 'SOE agent with yarn as radio signal',
-      body: 'Phyllis Latour Doyle was an SOE agent who parachuted into occupied France in 1944. She hid her Morse codes in a piece of yarn — different knots encoded the information. She survived four months behind enemy lines.'
+      body: 'Phyllis Latour Doyle was an SOE agent who parachuted into occupied France in 1944. She hid her Morse codes in a piece of yarn — different knots encoded the information. She survived four months behind enemy lines.',
+      links: [
+        { label: 'Wikipedia: Phyllis Latour Doyle', url: 'https://en.wikipedia.org/wiki/Phyllis_Latour_Doyle' },
+        { label: 'Wikipedia: Special Operations Executive', url: 'https://en.wikipedia.org/wiki/Special_Operations_Executive' }
+      ]
     },
     {
       title: 'Alexis Casdagli',
       teaser: 'Morse as art in a POW camp',
-      body: 'British officer Alexis Casdagli was a prisoner of war who embroidered seemingly harmless decorative patterns. Woven into the border: "God Save the King" and "Fuck Hitler" in Morse code. The German guards saw only needlework.'
+      body: 'British officer Alexis Casdagli was a prisoner of war who embroidered seemingly harmless decorative patterns. Woven into the border: "God Save the King" and "Fuck Hitler" in Morse code. The German guards saw only needlework.',
+      links: [
+        { label: 'Wikipedia: Alexis Casdagli', url: 'https://en.wikipedia.org/wiki/Alexis_Casdagli' },
+        { label: 'Imperial War Museum: Casdagli\'s needlework', url: 'https://www.iwm.org.uk/collections/item/object/30014090' }
+      ]
     },
     {
       title: 'Jeremiah Denton',
       teaser: 'Blinking in a live TV interview',
-      body: 'In 1966, US POW Jeremiah Denton was paraded by his captors in Vietnam for a propaganda interview. While speaking, he blinked — spelling out in Morse code: T-O-R-T-U-R-E. It was the first evidence the US received about the treatment of their prisoners.'
+      body: 'In 1966, US POW Jeremiah Denton was paraded by his captors in Vietnam for a propaganda interview. While speaking, he blinked — spelling out in Morse code: T-O-R-T-U-R-E. It was the first evidence the US received about the treatment of their prisoners.',
+      links: [
+        { label: 'Wikipedia: Jeremiah Denton', url: 'https://en.wikipedia.org/wiki/Jeremiah_Denton' },
+        { label: 'Wikipedia: Vietnam War POWs', url: 'https://en.wikipedia.org/wiki/American_prisoners_of_war_in_the_Vietnam_War' }
+      ]
     },
     {
       title: 'Tapping Between Cells',
       teaser: 'The oldest prison communication system',
-      body: 'Prisoners worldwide have tapped through walls — using Morse or the simpler Polybius square. Walls meant to divide became channels of solidarity. From Russian revolutionaries to US POWs in Vietnam: tapping was resistance.'
+      body: 'Prisoners worldwide have tapped through walls — using Morse or the simpler Polybius square. Walls meant to divide became channels of solidarity. From Russian revolutionaries to US POWs in Vietnam: tapping was resistance.',
+      links: [
+        { label: 'Wikipedia: Tap code', url: 'https://en.wikipedia.org/wiki/Tap_code' },
+        { label: 'Wikipedia: Polybius square', url: 'https://en.wikipedia.org/wiki/Polybius_square' }
+      ]
     },
     {
       title: 'Grok Gets Scammed',
       teaser: 'Morse as digital subversion today',
-      body: 'A Twitter/X user tricked Grok (Elon Musk\'s AI model) with Morse-coded prompts, getting it to generate content it would otherwise refuse. Not political resistance in the classical sense — but a beautiful reminder that encryption and circumvention remain living practice.'
+      body: 'A Twitter/X user tricked Grok (Elon Musk\'s AI model) with Morse-coded prompts, getting it to generate content it would otherwise refuse. Not political resistance in the classical sense — but a beautiful reminder that encryption and circumvention remain living practice.',
+      links: [
+        { label: '404 Media: Grok Morse Code Jailbreak', url: 'https://www.404media.co/grok-morse-code-jailbreak/' }
+      ]
     }
   ],
 
@@ -77,7 +106,7 @@ const EN = {
   translate_play: 'Play ▶',
   translate_stop: 'Stop ■',
   translate_speed_label: 'Speed',
-  translate_hint: 'Tip: Use spaces between characters, / between words',
+  translate_hint: 'Tip: spaces between characters, / between words',
 
   quiz_title: 'Practice Mode',
   quiz_desc: 'Learn letters and workshop words in Morse.',
@@ -93,31 +122,6 @@ const EN = {
   quiz_correct: '✓ Correct!',
   quiz_wrong: '✗ Wrong. The answer is:',
   quiz_score: 'Score',
-
-  stations_title: 'The 4 Stations',
-  stations_intro: 'The workshop has four practical stations to try out.',
-  stations: [
-    {
-      letter: 'A',
-      title: 'Auditory',
-      desc: 'Morse with sound — kazoos, buzzers, horns, voice. Listen and send with whatever you have.'
-    },
-    {
-      letter: 'B',
-      title: 'Visual over Distance',
-      desc: 'Torch, phone light, mirror. Signals across larger distances — like beacons or heliographs.'
-    },
-    {
-      letter: 'C',
-      title: 'Visual-Creative',
-      desc: 'Hide messages in images or texts. Work Morse code into bead jewellery or knots in yarn — just like the resistance fighters did.'
-    },
-    {
-      letter: 'D',
-      title: 'Haptic',
-      desc: 'Morse through touch — hand squeeze or tapping on a shoulder. Telephone: pass a Morse word through 5–6 people in a line. Voluntary only, with consent.'
-    }
-  ],
 
   cheatsheet_title: 'Cheatsheet',
   cheatsheet_desc: 'Front and back of your learning card — for printing or saving.',

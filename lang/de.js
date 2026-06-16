@@ -4,7 +4,6 @@ const DE = {
   nav_history: 'Geschichte',
   nav_translate: 'Übersetzer',
   nav_quiz: 'Quiz',
-  nav_stations: 'Stationen',
   nav_cheatsheet: 'Cheatsheet',
   nav_links: 'Weiterlernen',
 
@@ -30,42 +29,72 @@ const DE = {
     {
       title: 'Belgischer Widerstand, WW2',
       teaser: 'Stricken als Spionagetool',
-      body: 'Mitglieder des belgischen Widerstands strickten Nachrichten in ihre Arbeit ein: Ein fallengelassener Stich (Loch) stand für einen Zugstyp, ein Purl-Stich (Beule) für einen anderen. So wurden feindliche Truppenbewegungen dokumentiert — versteckt in harmlosen Strümpfen und Schals.'
+      body: 'Mitglieder des belgischen Widerstands strickten Nachrichten in ihre Arbeit ein: Ein fallengelassener Stich (Loch) stand für einen Zugstyp, ein Purl-Stich (Beule) für einen anderen. So wurden feindliche Truppenbewegungen dokumentiert — versteckt in harmlosen Strümpfen und Schals.',
+      links: [
+        { label: 'Wikipedia: Wartime knitting', url: 'https://en.wikipedia.org/wiki/Wartime_knitting' },
+        { label: 'Wikipedia: Belgischer Widerstand', url: 'https://de.wikipedia.org/wiki/Belgischer_Widerstand_(Zweiter_Weltkrieg)' }
+      ]
     },
     {
       title: 'UK-Strickverbot',
       teaser: 'Paranoia auf beiden Seiten',
-      body: 'Die britische Regierung erkannte das Potenzial — und verbot während des Zweiten Weltkriegs Strickmuster in Briefen ins Ausland. Gleichzeitig schickte das UK selbst Frauen hinter die feindlichen Linien, die Informationen in Strickarbeit codierten. Aus Paranoia wurde Taktik.'
+      body: 'Die britische Regierung erkannte das Potenzial — und verbot während des Zweiten Weltkriegs Strickmuster in Briefen ins Ausland. Gleichzeitig schickte das UK selbst Frauen hinter die feindlichen Linien, die Informationen in Strickarbeit codierten. Aus Paranoia wurde Taktik.',
+      links: [
+        { label: 'Wikipedia: Wartime knitting', url: 'https://en.wikipedia.org/wiki/Wartime_knitting' },
+        { label: 'The Guardian: Knitting as espionage', url: 'https://www.theguardian.com/lifeandstyle/2014/jun/20/knitting-spies-subversive-stitch' }
+      ]
     },
     {
       title: 'Madame Levangle',
       teaser: 'Fußklopfen unter den Augen der Besatzer',
-      body: 'Während ein deutscher Offizier in ihrem Haus stationiert war, saß Madame Levangle scheinbar ruhig beim Stricken — und tippte mit ihrem Fuß gegen den Boden. Im Zimmer darunter taten ihre Kinder so, als machten sie Hausaufgaben. In Wirklichkeit notierten und übersetzten sie jeden Morsecode, den ihre Mutter sendete.'
+      body: 'Während ein deutscher Offizier in ihrem Haus stationiert war, saß Madame Levangle scheinbar ruhig beim Stricken — und tippte mit ihrem Fuß gegen den Boden. Im Zimmer darunter taten ihre Kinder so, als machten sie Hausaufgaben. In Wirklichkeit notierten und übersetzten sie jeden Morsecode, den ihre Mutter sendete.',
+      links: [
+        { label: 'Wikipedia: Wartime knitting (Abschnitt Morse)', url: 'https://en.wikipedia.org/wiki/Wartime_knitting#Morse_code' }
+      ]
     },
     {
       title: 'Phyllis Latour Doyle',
       teaser: 'SOE-Agentin mit Garn als Funksignal',
-      body: 'Phyllis Latour Doyle war SOE-Agentin und sprang 1944 mit dem Fallschirm über dem besetzten Frankreich ab. Sie versteckte ihre Morsecodes in einem Stück Garn — verschiedene Knoten codierten die Informationen. So überlebte sie vier Monate hinter feindlichen Linien.'
+      body: 'Phyllis Latour Doyle war SOE-Agentin und sprang 1944 mit dem Fallschirm über dem besetzten Frankreich ab. Sie versteckte ihre Morsecodes in einem Stück Garn — verschiedene Knoten codierten die Informationen. So überlebte sie vier Monate hinter feindlichen Linien.',
+      links: [
+        { label: 'Wikipedia: Phyllis Latour Doyle', url: 'https://en.wikipedia.org/wiki/Phyllis_Latour_Doyle' },
+        { label: 'Wikipedia: Special Operations Executive', url: 'https://de.wikipedia.org/wiki/Special_Operations_Executive' }
+      ]
     },
     {
       title: 'Alexis Casdagli',
       teaser: 'Morse als Kunst im Kriegsgefangenenlager',
-      body: 'Der britische Offizier Alexis Casdagli war Kriegsgefangener und stickte scheinbar harmlose dekorative Muster. Eingewoben in den Rahmen: "God Save the King" und "Fuck Hitler" in Morsecode. Die deutschen Wachen sahen nur Handarbeit.'
+      body: 'Der britische Offizier Alexis Casdagli war Kriegsgefangener und stickte scheinbar harmlose dekorative Muster. Eingewoben in den Rahmen: "God Save the King" und "Fuck Hitler" in Morsecode. Die deutschen Wachen sahen nur Handarbeit.',
+      links: [
+        { label: 'Wikipedia: Alexis Casdagli', url: 'https://en.wikipedia.org/wiki/Alexis_Casdagli' },
+        { label: 'Imperial War Museum: Casdagli\'s needlework', url: 'https://www.iwm.org.uk/collections/item/object/30014090' }
+      ]
     },
     {
       title: 'Jeremiah Denton',
       teaser: 'Blinzeln im Live-TV-Interview',
-      body: '1966 wurde der US-Kriegsgefangene Jeremiah Denton von seinen Entführern in Vietnam für ein Propaganda-Interview vorgeführt. Während er sprach, blinzelte er — und buchstabierte so mit dem Morsecode: T-O-R-T-U-R-E. Es war der erste Beweis, den die USA für die Behandlung ihrer Gefangenen erhielten.'
+      body: '1966 wurde der US-Kriegsgefangene Jeremiah Denton von seinen Entführern in Vietnam für ein Propaganda-Interview vorgeführt. Während er sprach, blinzelte er — und buchstabierte so mit dem Morsecode: T-O-R-T-U-R-E. Es war der erste Beweis, den die USA für die Behandlung ihrer Gefangenen erhielten.',
+      links: [
+        { label: 'Wikipedia: Jeremiah Denton', url: 'https://en.wikipedia.org/wiki/Jeremiah_Denton' },
+        { label: 'Wikipedia: Vietnamkrieg-Kriegsgefangene', url: 'https://de.wikipedia.org/wiki/Kriegsgefangene_im_Vietnamkrieg' }
+      ]
     },
     {
       title: 'Klopfen zwischen Zellen',
       teaser: 'Das älteste Gefängnis-Kommunikationssystem',
-      body: 'Gefangene auf der ganzen Welt haben durch Wände geklopft — Morse oder das einfachere Polybius-Quadrat-System. Wände, die trennen sollen, wurden zu Kanälen der Solidarität. Von russischen Revolutionär*innen bis zu US-Kriegsgefangenen in Vietnam: Klopfen war Widerstand.'
+      body: 'Gefangene auf der ganzen Welt haben durch Wände geklopft — Morse oder das einfachere Polybius-Quadrat-System. Wände, die trennen sollen, wurden zu Kanälen der Solidarität. Von russischen Revolutionär*innen bis zu US-Kriegsgefangenen in Vietnam: Klopfen war Widerstand.',
+      links: [
+        { label: 'Wikipedia: Tap code', url: 'https://en.wikipedia.org/wiki/Tap_code' },
+        { label: 'Wikipedia: Polybius-Quadrat', url: 'https://de.wikipedia.org/wiki/Polybios-Chiffre' }
+      ]
     },
     {
       title: 'Grok wird gescamt',
       teaser: 'Morse als digitale Subversion heute',
-      body: 'Ein Twitter/X-Nutzer hat Grok (das KI-Modell von Elon Musk) mit Morsecode-Prompts hereingelegt und es dazu gebracht, Inhalte zu generieren, die es sonst verweigert hätte. Kein politischer Widerstand im klassischen Sinne — aber ein schöner Beweis, dass Verschlüsselung und Umgehungsstrategien lebendige Praxis bleiben.'
+      body: 'Ein Twitter/X-Nutzer hat Grok (das KI-Modell von Elon Musk) mit Morsecode-Prompts hereingelegt und es dazu gebracht, Inhalte zu generieren, die es sonst verweigert hätte. Kein politischer Widerstand im klassischen Sinne — aber ein schöner Beweis, dass Verschlüsselung und Umgehungsstrategien lebendige Praxis bleiben.',
+      links: [
+        { label: '404 Media: Grok Morse Code Jailbreak', url: 'https://www.404media.co/grok-morse-code-jailbreak/' }
+      ]
     }
   ],
 
@@ -77,7 +106,7 @@ const DE = {
   translate_play: 'Abspielen ▶',
   translate_stop: 'Stop ■',
   translate_speed_label: 'Geschwindigkeit',
-  translate_hint: 'Tipp: Nutze Leerzeichen zwischen Zeichen, / zwischen Wörtern',
+  translate_hint: 'Tipp: Leerzeichen zwischen Zeichen, / zwischen Wörtern',
 
   quiz_title: 'Lernmodus',
   quiz_desc: 'Buchstaben und Workshop-Wörter in Morse lernen.',
@@ -93,31 +122,6 @@ const DE = {
   quiz_correct: '✓ Richtig!',
   quiz_wrong: '✗ Falsch. Richtig wäre:',
   quiz_score: 'Punkte',
-
-  stations_title: 'Die 4 Stationen',
-  stations_intro: 'Im Workshop gibt es vier praktische Stationen zum Ausprobieren.',
-  stations: [
-    {
-      letter: 'A',
-      title: 'Auditiv',
-      desc: 'Morsen mit Tönen — Kazoos, Summer, Tröten, Stimme. Hören und Senden mit dem, was ihr habt.'
-    },
-    {
-      letter: 'B',
-      title: 'Visuell über Distanz',
-      desc: 'Taschenlampe, Handylicht, Spiegel. Signale über größere Entfernungen — wie Leuchtfeuer oder Heliograf.'
-    },
-    {
-      letter: 'C',
-      title: 'Visuell-kreativ',
-      desc: 'Botschaften verstecken in Bildern oder Texten. Morsecode in Perlenschmuck oder Knoten in Garn einarbeiten — wie die Widerstandskämpfer*innen.'
-    },
-    {
-      letter: 'D',
-      title: 'Haptisch',
-      desc: 'Morsen durch Berührung — Handdruck oder Tippen auf die Schulter. Stille Post: ein Morsewort durch 5–6 Personen in einer Reihe. Nur freiwillig, nur mit Consent.'
-    }
-  ],
 
   cheatsheet_title: 'Cheatsheet',
   cheatsheet_desc: 'Vorder- und Rückseite eurer Lernkarte — zum Ausdrucken oder Speichern.',
